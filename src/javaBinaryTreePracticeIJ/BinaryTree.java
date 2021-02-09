@@ -1,6 +1,8 @@
 package javaBinaryTreePracticeIJ;
 
 import javax.xml.soap.Node;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BinaryTree {
   Node root;
@@ -88,6 +90,44 @@ public class BinaryTree {
       traverseInOrder(node.left);
       visit(node.value);
       traverseInOrder(node.right);
+    }
+  }
+
+  public void traversePreOrder(Node node) {
+    if (node != null) {
+      visit(node.value);
+      traversePreOrder(node.left);
+      traversePreOrder(node.right);
+    }
+  }
+
+  public void traversePostOrder(Node node) {
+    if (node != null) {
+      traversePostOrder(node.left);
+      traversePostOrder(node.right);
+      visit(node.value);
+    }
+  }
+
+  public void traverseLevelOrder() {
+    if (root == null) {
+      return;
+    }
+    Queue<Node> nodes = new LinkedList<>();
+    nodes.add(root);
+
+    while (!nodes.isEmpty()) {
+
+      Node node = nodes.remove();
+      System.out.print(" " + node.value);
+
+      if (node.left != null) {
+        nodes.add(node.left);
+      }
+
+      if (node.right != null) {
+        nodes.add(node.right);
+      }
     }
   }
 
