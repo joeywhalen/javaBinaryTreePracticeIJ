@@ -3,6 +3,7 @@ package javaBinaryTreePracticeIJ;
 import javax.xml.soap.Node;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BinaryTree {
   Node root;
@@ -127,6 +128,24 @@ public class BinaryTree {
 
       if (node.right != null) {
         nodes.add(node.right);
+      }
+    }
+  }
+
+  public void traverseInOrderWithoutRecursion() {
+    Stack<Node> stack = new Stack<Node>();
+    Node current = root;
+    stack.push(root);
+    while (! stack.IsEmpty()) {
+      while (current.left != null) {
+        current = current.left;
+        stack.push(current);
+      }
+      current = stack.pop();
+      visit(current.value);
+      if (current.right != null) {
+        current = current.right;
+        stack.push(current);
       }
     }
   }
