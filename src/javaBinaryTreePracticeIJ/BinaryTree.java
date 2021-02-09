@@ -83,6 +83,14 @@ public class BinaryTree {
     return root.left == null ? root.value : findSmallestValue(root.left);
   }
 
+  public void traverseInOrder(Node node) {
+    if (node != null) {
+      traverseInOrder(node.left);
+      visit(node.value);
+      traverseInOrder(node.right);
+    }
+  }
+
   
 
 }
